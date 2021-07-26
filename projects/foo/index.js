@@ -14,6 +14,7 @@
  */
 function returnFirstArgument(value) {
   return value;
+  // return arguments[0];
 }
 
 /*
@@ -93,6 +94,7 @@ function returnArgumentsArray() {
  */
 function bindFunction(fn, ...args) {
   return fn.bind(null, ...args);
+  // return () => fn(...args);
 }
 
 export {
