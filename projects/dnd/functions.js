@@ -61,7 +61,7 @@ function emulateClick(target) {
  */
 function delegate(target, fn) {
   target.addEventListener('click', (e) => {
-    if (e.target.tagname === 'BUTTON') {
+    if (e.target.tagName === 'BUTTON') {
       fn();
     }
   });
