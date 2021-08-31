@@ -13,7 +13,6 @@ export default class GeoReview {
     }
     const coords = this.callApi('coords');
 
-    console.log('текст', coords);
     for (const item of coords) {
       /* for (let i = 0; i < item.total; i++) { */
       this.map.createPlacemark(item.coords);
@@ -70,6 +69,7 @@ export default class GeoReview {
   onClick(coords) {
     this.map.openBalloon(coords);
     const list = this.callApi('list', { coords });
+
     const form = this.createForm(coords, list);
     this.map.setBalloonContent(form.innerHTML);
   }
@@ -77,7 +77,6 @@ export default class GeoReview {
   onDocumentClick(e) {
     if (e.target.dataset.role === 'review-add') {
       const reviewForm = document.querySelector('[data-role=review-form]');
-      /* const coords = JSON.parse(localStorage.getItem('reviews')); */
 
       const coords = JSON.parse(reviewForm.dataset.coords);
       const data = {
