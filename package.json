@@ -7,9 +7,9 @@
     "codestyle": "eslint projects",
     "codestyle:fix": "eslint projects --fix",
     "travis": "npm run codestyle && npm test",
-    "build": "webpack --progress --colors",
-    "build:prod": "NODE_ENV=production webpack --progress --colors",
-    "watch": "webpack-dev-server --progress --colors",
+    "build": "webpack --progress --color",
+    "build:prod": "NODE_ENV=production webpack --progress --color",
+    "watch": "webpack-dev-server --progress --color",
     "start": "npm run watch",
     "test": "jest",
     "test:coverage": "jest --coverage"
@@ -49,9 +49,11 @@
     "node-fetch-polyfill": "^2.0.6",
     "prettier": "^2.0.5",
     "raw-loader": "^4.0.1",
-    "webpack": "^4.46.0",
-    "webpack-cli": "^3.3.12",
-    "webpack-dev-server": "^3.11.0",
+    "webpack-cli": "^4.8.0",
     "websocket": "^1.0.34"
+  },
+  "devDependencies": {
+    "webpack": "^4.46.0",
+    "webpack-dev-server": "^4.1.0"
   }
 }

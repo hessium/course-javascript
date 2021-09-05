@@ -25,23 +25,20 @@ export default class GeoReview {
   callApi(method, body = {}) {
     if (method === 'coords') {
       return JSON.parse(localStorage.getItem('reviews'));
-    }
-    if (method === 'add') {
+    } else if (method === 'add') {
       console.log(body);
       const storage = JSON.parse(localStorage.getItem('reviews'));
-      console.log(storage);
       storage.push(body);
       localStorage.setItem('reviews', JSON.stringify(storage));
+    } else if (method === 'list') {
+      const storage = JSON.parse(localStorage.getItem('reviews'));
+      storage.push(body);
+      console.log(body);
+      localStorage.setItem('reviews', JSON.stringify(storage));
+      for (const key in storage) {
+        return [];
+      }
     }
-    if (method === 'list') {
-      return [];
-    }
-
-    /*  const res =  await fetch(`/map/${method}`, {
-      method: 'post',
-      body: JSON.stringify(body), 
-    }); */
-    /* return await res.json(); */
   }
 
   createForm(coords, reviews) {
@@ -60,16 +57,15 @@ export default class GeoReview {
     </div>
     <div>${item.text}</div>
     `;
+
       reviewList.appendChild(div);
     }
-
     return root;
   }
 
   onClick(coords) {
     this.map.openBalloon(coords);
     const list = this.callApi('list', { coords });
-
     const form = this.createForm(coords, list);
     this.map.setBalloonContent(form.innerHTML);
   }
@@ -77,7 +73,6 @@ export default class GeoReview {
   onDocumentClick(e) {
     if (e.target.dataset.role === 'review-add') {
       const reviewForm = document.querySelector('[data-role=review-form]');
-
       const coords = JSON.parse(reviewForm.dataset.coords);
       const data = {
         coords,
